@@ -1,12 +1,5 @@
 #!/bin/bash
 
-echo 'Clean-Up Directory'
-rm package.json
-rm app.js
-rm -rf public
-rm -rf routes
-rm -rf views
-
 echo 'Installing express.js'
 npm install -g express
 

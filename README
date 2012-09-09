@@ -1,0 +1,4 @@
+Create structure and files for Express.js 3.0 + Twitter Bootstrap + RequireJS
+
+    $ > sh create.sh
+    $ > node app.js
