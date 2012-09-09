@@ -30,4 +30,9 @@ rm jquery-require-sample.zip
 cp jquery-require-sample/webapp-build/scripts/require-jquery.js public/javascripts/r-j.js
 rm -rf jquery-require-sample
 
+echo " "
+echo " Start your application with: "
+echo " "
+echo " $ > node app.js "
+echo " "
 rm -rf create.sh
