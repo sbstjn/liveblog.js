@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo 'Installing dependencies'
+npm install less-middleware jade
+
 echo 'Installing express.js'
 npm install -g express
 
