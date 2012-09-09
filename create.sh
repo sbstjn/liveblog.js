@@ -35,4 +35,4 @@ rm jquery-require-sample.zip
 cp jquery-require-sample/webapp-build/scripts/require-jquery.js public/javascripts/r-j.js
 rm -rf jquery-require-sample
 
-
+rm -rf create.sh
