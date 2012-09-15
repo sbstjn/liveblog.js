@@ -19,6 +19,7 @@
   ],
   "dependencies": {
     "express": "3.0.0rc4",
+    "socket.io": ">= 0.9.10",
     "jade": "*",
     "less-middleware": "*"
   },

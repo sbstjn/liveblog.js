@@ -4,6 +4,7 @@
  */
 
 var express = require('express')
+  , socket = require('socket.io')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
@@ -33,6 +34,12 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/users', user.list);
 
-http.createServer(app).listen(app.get('port'), function(){
+var server = http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
+
+if (process.env.PORT_SOCKET) {
+  socket.listen(process.env.PORT_SOCKET * 1);
+} else {
+  socket.listen(server);
+}
