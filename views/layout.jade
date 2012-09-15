@@ -7,11 +7,13 @@ html(lang='en')
     meta(name='description', content='')
     meta(name='author', content='')
     link(rel='stylesheet', href='/stylesheets/bs.css') 
-    link(rel='stylesheet', href='/stylesheets/style.css')    
+    link(rel='stylesheet', href='/stylesheets/style.css')   
+   
     style
       body {
       padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
+    script(src=protocol + "://" + hostname + ":" + port + "/socket.io/socket.io.js")
     script(data-main="javascripts/main", src="javascripts/r-j.js")
   body
     .navbar.navbar-inverse.navbar-fixed-top
