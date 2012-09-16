@@ -14,8 +14,8 @@
 #menu #post { padding-right: 30px; }
 #menu #post textarea { width: 100%; margin: 0 18px 0 8px; }
 #menu .btn-group { text-align: right; margin: 8px 8px 0px 8px; }
-
-#menu .info { float: left; position: relative; margin: 3px 0 0 8px;  }
+#menu form { margin-bottom: 0; padding: 0; }
+#menu .info { float: left; position: relative; margin: 3px 0 0 14px;  }
 #menu img.loading { float: left; position: relative; margin: 8px 0 0 12px; display: none; }
 
 #ticker p { margin: 0; padding: 0; }

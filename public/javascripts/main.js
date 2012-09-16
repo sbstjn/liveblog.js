@@ -32,7 +32,9 @@ require(["jquery", "console"], function($, TickerConsole) {
       $('#post-action .loading').css('display', 'block');
 
       $.post("/post", $("form#post").serialize(), function(data) {
-        console.log(data);
+        $('textarea#post-content').val('').change();
+        $('#post-action .loading').css('display', 'none');
+        $('#post-action .info').css('display', 'block');
       });
     });
 
@@ -67,6 +69,8 @@ require(["jquery", "console"], function($, TickerConsole) {
 
     socket.on('data', function(data) {
       myCon.add('Received Data: ' + JSON.stringify(data));
+
+      $('#ticker ul').append('<li class="well"><p>' + data.msg + '</p><small>' + new Date(data.date) + '</small>');
     });
     
     // Add events to switch sorting
