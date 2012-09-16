@@ -10,11 +10,11 @@ block content
             small!= post.date
     .span3#menu
       .well
-        ul.nav.nav-list
-          li.active
-            a(href="#") Sort Ascending
-          li
-            a(href="#") Sort Descending
+        ul.nav.nav-list#sorting
+          li.asc
+            a(href="#asc") Sort Ascending
+          li.desc
+            a(href="#desc") Sort Descending
       p
         small Last Message @ 23:34:13.041
       .well 
@@ -28,4 +28,4 @@ block content
     .span12
       .well
         ul
-          li Waiting for connection…
+          li Loading assets…

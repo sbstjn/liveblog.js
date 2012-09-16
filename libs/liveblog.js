@@ -5,7 +5,8 @@ var fs = require('fs')
   , d8local = require('d8/locale/en-US')
   , d8 = require('d8')
   , md = require("node-markdown").Markdown
-  , path = require('path');
+  , path = require('path')
+  , socket = require('./socket');
 
 var CNF = {
   fileRegEx: /^\d{4}\-\d{2}\-\d{2}\T\d{9}$/,
@@ -17,9 +18,10 @@ var Blog = function(app) {
 };
 
 Blog.prototype.initialize = function(app) {
-  this.posts = {};
+  this.socket = socket;
+  this.posts  = {};
   this.export = [];
-  this.files = fs.readdirSync(app.get('root') + '/posts');
+  this.files  = fs.readdirSync(app.get('root') + '/posts');
   
   for (var i = 0; i < this.files.length; i++) {
     if (!this.files[i].match(CNF.fileRegEx)) {
@@ -40,5 +42,10 @@ Blog.prototype.recent = function() {
   return this.export;
 };
 
+Blog.prototype.handleSocket = function(s) {
+  this.socket.add(s);
+};
+
 exports.initialize = function(app) { return new Blog(app); };
+
 

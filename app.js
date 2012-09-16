@@ -45,7 +45,12 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 });
 
 if (process.env.PORT_SOCKET) {
-  socket.listen(process.env.PORT_SOCKET * 1);
+  var io = socket.listen(process.env.PORT_SOCKET * 1);
 } else {
-  socket.listen(server);
+  var io = socket.listen(server);
 }
+
+io.sockets.on('connection', function(socket) { 
+  app.get('blog').handleSocket(socket); 
+});
+
