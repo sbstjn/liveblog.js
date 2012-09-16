@@ -9,7 +9,7 @@ define(['jquery'], function ($) {
   }
 
   consoleObj.prototype.add = function(msg) {
-    $(this.selector.list).append('<li>' + msg + '</li>');
+    $(this.selector.list).append('<li>' + msg.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') + '</li>');
   };
   
   return consoleObj;

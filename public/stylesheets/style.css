@@ -20,7 +20,8 @@
 
 #ticker p { margin: 0; padding: 0; }
 #ticker .well, #console .well { margin-bottom: 8px; padding: 7px 8px; font-size: 13px; }
-
+#ticker .delete a { color: #666; font-size: 10px; }
+#ticker .delete { margin-top: -6px; }
 #console .well { font-family: Monaco; font-size: 11px; padding: 4px 8px; }
 
 #footer p { font-size: 12px; }
