@@ -3,9 +3,10 @@
 #menu .well { padding: 8px 0; margin-bottom: 2px; }
 #menu p { margin-bottom: 2px; text-align: center; }
 #menu p small { font-size: 11px; }
-#menu textarea { width: 188px; margin: 0 8px; }
+#menu #post { padding-right: 30px; }
+#menu #post textarea { width: 100%; margin: 0 18px 0 8px; }
 #menu .btn-group { text-align: right; margin: 8px 8px 0px 8px; }
-#menu .info { float: left; position: relative; margin: 8px; line-height: 26px; }
+#menu .info { float: left; position: relative; margin: 3px 0 0 8px;}
 
 #ticker p { margin: 0; padding: 0; }
 #ticker .well, #console .well { margin-bottom: 8px; padding: 7px 8px; font-size: 13px; }
