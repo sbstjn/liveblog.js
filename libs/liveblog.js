@@ -48,6 +48,9 @@ Blog.prototype.handleSocket = function(s) {
 };
 
 Blog.prototype.post = function(msg) {
+  if (msg == '') {
+    return; }
+  
   var date  = new Date();
   var file  = this.root + '/posts/' + date.format(CNF.dateString);
   var write = fs.writeFileSync(file, msg);

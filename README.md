@@ -1,6 +1,8 @@
 # liveblog.js
 
-Most live coverage sites are more than worse. **liveblog.js** is a Node.js Application using Express.js and Socket.IO for providing a simple and reliable plattform for **Live Event Coverages**. Create your own Liveblog withing seconds and stream new posts to your readers using modern Web Sockets…
+Work-in-progress Node.js application for creating *Live Event Coverages* with Express.js and Socket.IO. Create your own Liveblog/Ticker within seconds and stream new posts to your clients using Web Sockets. 
+
+**Warning:** Work-in-Progress! Authentication is missing and some bugs when switching post order!
 
 ### Installation
 
