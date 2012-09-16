@@ -1,0 +1,9 @@
+#ticker ul, #ticker ul li, #console ul, #console ul li { list-style-type: none; margin: 0; }
+#menu .well { padding: 8px 0; margin-bottom: 2px; }
+#menu p { margin-bottom: 2px; text-align: center; }
+#menu p small { font-size: 11px; }
+#menu textarea { width: 188px; margin: 0 8px; }
+#menu .btn-group { text-align: right; margin: 8px 8px 0px 8px; }
+#menu .info { float: left; position: relative; margin: 8px; line-height: 26px; }
+#ticker p { margin: 0; padding: 0; }
+#ticker .well { margin-bottom: 8px; padding: 7px 8px; font-size: 13px; }

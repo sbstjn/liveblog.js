@@ -1,5 +1,31 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .row-fluid
+    .span9#ticker
+      ul
+        - for (var i = 0; i < posts.length; i++)
+          - var post = posts[i]
+          li.well!= post.message
+            small!= post.date
+    .span3#menu
+      .well
+        ul.nav.nav-list
+          li.active
+            a(href="#") Sort Ascending
+          li
+            a(href="#") Sort Descending
+      p
+        small Last Message @ 23:34:13.041
+      .well 
+        textarea(rows="4") Frank Zander ist das neue Maskottchen vom VfB! Den gibt's nicht überall zu sehen!!!
+        small.info 125
+        .btn-group
+          button.btn.btn-small Clear
+          button.btn.btn-small.btn-primary Submit
+  hr
+  .row-fluid#console
+    .span12
+      .well
+        ul
+          li Waiting for connection…

@@ -6,15 +6,12 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(name='description', content='')
     meta(name='author', content='')
-    link(rel='stylesheet', href='/stylesheets/bs.css') 
+    link(rel='stylesheet', href='/stylesheets/bs.css')
+    link(rel='stylesheet', href='/stylesheets/bs-r.css') 
     link(rel='stylesheet', href='/stylesheets/style.css')   
-   
-    style
-      body {
-      padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
     script(src=protocol + "://" + hostname + ":" + port + "/socket.io/socket.io.js")
     script(data-main="javascripts/main", src="javascripts/r-j.js")
+    style body { padding-top: 60px; }
   body
     .navbar.navbar-inverse.navbar-fixed-top
       .navbar-inner
@@ -24,13 +21,5 @@ html(lang='en')
             span.icon-bar
             span.icon-bar
           a.brand(href='#') liveblog.js
-          .nav-collapse.collapse
-            ul.nav
-              li.active
-                a(href='#') Home
-              li
-                a(href='#about') About
-              li
-                a(href='#contact') Contact
     .container
       block content
