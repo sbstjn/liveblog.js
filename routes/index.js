@@ -12,7 +12,18 @@ exports.index = function(req, res) {
 };
 
 exports.export = function(req, res) {
-  res.send('export ' + req.param('format'));
+  switch (req.param('format')) {
+    case 'json':
+      res.send((req.app.get('blog').recent()));
+      break;
+    case 'xml':
+      res.send('MLX');
+      break;
+    default:
+      res.send('unknown format');
+      break;
+  }
+  // res.send('export ' + req.param('format'));
 };
 
 exports.stream = function(req, res) {

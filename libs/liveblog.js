@@ -55,7 +55,7 @@ Blog.prototype.post = function(msg) {
 
   this.posts[file] = fileObj;
   this.export.push(fileObj);
-  this.socket.broadcast({date: date, msg: msg});
+  this.socket.broadcast({date: date, msg: md(msg)});
   this.export.sort(function(a, b) { return a.date > b.date ? 1 : -1; });
 };
 
