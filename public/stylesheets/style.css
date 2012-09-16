@@ -14,9 +14,13 @@
 #menu #post { padding-right: 30px; }
 #menu #post textarea { width: 100%; margin: 0 18px 0 8px; }
 #menu .btn-group { text-align: right; margin: 8px 8px 0px 8px; }
-#menu .info { float: left; position: relative; margin: 3px 0 0 8px;}
+
+#menu .info { float: left; position: relative; margin: 3px 0 0 8px;  }
+#menu img.loading { float: left; position: relative; margin: 8px 0 0 12px; display: none; }
 
 #ticker p { margin: 0; padding: 0; }
 #ticker .well, #console .well { margin-bottom: 8px; padding: 7px 8px; font-size: 13px; }
 
 #console .well { font-family: Monaco; font-size: 11px; padding: 4px 8px; }
+
+#footer p { font-size: 12px; }

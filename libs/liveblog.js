@@ -22,12 +22,13 @@ Blog.prototype.initialize = function(app) {
   this.posts  = {};
   this.export = [];
   this.files  = fs.readdirSync(app.get('root') + '/posts');
+  this.root   = app.get('root');
   
   for (var i = 0; i < this.files.length; i++) {
     if (!this.files[i].match(CNF.fileRegEx)) {
       continue; }
     
-    var file = app.get('root') + '/posts/' + this.files[i];
+    var file = this.root + '/posts/' + this.files[i];
     var data = '' + fs.readFileSync(file);
     
     var fileObj = {file: file, date: Date.toDate(this.files[i], CNF.dateString ), message: md(data)};
@@ -44,6 +45,18 @@ Blog.prototype.recent = function() {
 
 Blog.prototype.handleSocket = function(s) {
   this.socket.add(s);
+};
+
+Blog.prototype.post = function(msg) {
+  var date  = new Date();
+  var file  = this.root + '/posts/' + date.format(CNF.dateString);
+  var write = fs.writeFileSync(file, msg);
+  var fileObj = {file: file, date: date, message: msg};
+
+  this.posts[file] = fileObj;
+  this.export.push(fileObj);
+  this.socket.broadcast({date: date, msg: msg});
+  this.export.sort(function(a, b) { return a.date > b.date ? 1 : -1; });
 };
 
 exports.initialize = function(app) { return new Blog(app); };

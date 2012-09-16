@@ -40,6 +40,8 @@ app.get('/', routes.index);
 app.get('/export.:format', routes.export);
 app.get('/stream.:format', routes.stream);
 
+app.post('/post', routes.post);
+
 var server = http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });

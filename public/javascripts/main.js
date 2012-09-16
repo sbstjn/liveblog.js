@@ -19,7 +19,34 @@ require(["jquery", "console"], function($, TickerConsole) {
 
   // Start
   $(document).ready(function(e) {
+    // Add events to Post and Clear
+    $('button#clear').click(function(e) {
+      e.preventDefault();
+      $('#post-content').empty();
+    });
+
+    $('button#submit').click(function(e) {
+      e.preventDefault();
+      
+      $('#post-action .info').css('display', 'none');
+      $('#post-action .loading').css('display', 'block');
+
+      $.post("/post", $("form#post").serialize(), function(data) {
+        console.log(data);
+      });
+    });
+
+    $('textarea#post-content').keyup(function() {
+      $('textarea#post-content').change();
+    })
+    
+    $('textarea#post-content').change(function() {
+      $('#post-action .info').html($('textarea#post-content').val().length);
+    });
+
+    $('textarea#post-content').change();
     // Reverse items if sorting DESC
+    
     $('#sorting .' + mode.toLowerCase()).addClass('active'); 
     if (mode == 'DESC') {
       reverse(); }
@@ -36,6 +63,10 @@ require(["jquery", "console"], function($, TickerConsole) {
     // Received stats
     socket.on('stats', function(data) {
       myCon.add('Received Stats: ' + JSON.stringify(data));
+    });
+
+    socket.on('data', function(data) {
+      myCon.add('Received Data: ' + JSON.stringify(data));
     });
     
     // Add events to switch sorting

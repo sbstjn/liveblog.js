@@ -18,3 +18,8 @@ exports.export = function(req, res) {
 exports.stream = function(req, res) {
   res.send('stream ' + req.param('format'));  
 };
+
+exports.post = function(req, res) {
+  req.app.get('blog').post(req.body.value);
+  res.send('{"status": "200"}');
+};

@@ -6,7 +6,8 @@ block content
       ul
         - for (var i = 0; i < posts.length; i++)
           - var post = posts[i]
-          li.well!= post.message
+          li.well
+            p!= post.message
             small!= post.date
     .span3#menu
       .well
@@ -18,16 +19,12 @@ block content
       p
         small Last Message @ 23:34:13.041
       .well
-        #post
-          textarea(rows="4") Frank Zander ist das neue Maskottchen vom VfB! Den gibt's nicht überall zu sehen!!!
+        form#post
+          textarea#post-content(name="value", rows="4") Frank Zander ist das neue Maskottchen vom VfB! Den gibt's nicht überall zu sehen!!!
         #post-action
-          small.info 125
+          small.info 
+          img.loading(src="/images/ajax-loader.gif")
           .btn-group
-            button.btn.btn-small Clear
-            button.btn.btn-small.btn-primary Submit
-  hr
-  .row-fluid#console
-    .span12
-      .well
-        ul
-          li Loading assets…
+            button#clear.btn.btn-small Clear
+            button#submit.btn.btn-small.btn-primary Submit
+
