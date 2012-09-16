@@ -1,3 +1,11 @@
+@media (max-width: 979px) {
+  body { padding-top: 0px; }
+}
+
+@media (min-width: 980px) {
+  body { padding-top: 60px; }
+}
+
 #ticker ul, #ticker ul li, #console ul, #console ul li { list-style-type: none; margin: 0; }
 
 #menu .well { padding: 8px 0; margin-bottom: 2px; }

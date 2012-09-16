@@ -13,15 +13,10 @@ html(lang='en')
     script
       var socketConfig = {protocol: "#{protocol}", host: "#{hostname}", port: "#{port}"};
     script(data-main="javascripts/main", src="javascripts/r-j.js")
-    style body { padding-top: 60px; }
   body
     .navbar.navbar-inverse.navbar-fixed-top
       .navbar-inner
         .container
-          a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
           a.brand(href='#') liveblog.js
     .container
       block content
