@@ -2,9 +2,7 @@
 
 ![Node.js Live Blogging system with Socket.IO and Express.JS](http://semu.mp/liveblog.png)
 
-Work-in-progress Node.js application for creating *Live Event Coverages* with Express.js and Socket.IO. Create your own Liveblog/Ticker within seconds and stream new posts to your clients using Web Sockets. 
-
-**Warning:** Work-in-Progress! Authentication is missing and some bugs when switching post order!
+Example application for handling *Live Event Coverage* with Express.js and Socket.IO. Create your own Liveblog/Ticker within seconds and stream new posts to your clients using Web Sockets. 
 
 ### Installation
 
