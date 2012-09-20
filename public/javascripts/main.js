@@ -80,7 +80,7 @@ require(["jquery", "console"], function($, TickerConsole) {
       myCon.add('Received Data: ' + JSON.stringify(data));
       
       $('#lastmessage').html((new Date()).format('H:i:s'));
-      $('#ticker ul').append('<li class="well"><p>' + data.msg + '</p><small>' + new Date(data.date) + '</small>');
+      $('#ticker ul').append('<li class="well">' + data.message + '<small>' + new Date(data.date) + '</small>');
     });
     
     // Add events to switch sorting
