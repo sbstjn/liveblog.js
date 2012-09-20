@@ -17,7 +17,8 @@ block content
           li.desc
             a(href="#desc") Sort Descending
       p
-        small Last Message @ 23:34:13.041
+        small Last Message @ 
+          span#lastmessage #{posts[posts.length-1].date.format('H:i:s')} 
       .well
         form#post
           textarea#post-content(name="value", rows="4") And we're ready to start!

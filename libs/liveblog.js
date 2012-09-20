@@ -1,6 +1,3 @@
-/*
- * GET home page.
- */
 var fs = require('fs')
   , d8local = require('d8/locale/en-US')
   , d8 = require('d8')
@@ -28,14 +25,14 @@ Blog.prototype.initialize = function(app) {
     if (!this.files[i].match(CNF.fileRegEx)) {
       continue; }
     
-    var file = this.root + '/posts/' + this.files[i];
-    var data = '' + fs.readFileSync(file);
+    var file = this.root + '/posts/' + this.files[i]
+      , data = fs.readFileSync(file) + ''
+      , fileObj = {file: file, date: Date.toDate(this.files[i], CNF.dateString ), message: md(data), raw: data};
     
-    var fileObj = {file: file, date: Date.toDate(this.files[i], CNF.dateString ), message: md(data)};
     this.posts[file] = fileObj;
     this.export.push(fileObj);
   }
-    
+  
   this.export.sort(function(a, b) { return a.date > b.date ? 1 : -1; });  
 };
 
@@ -51,17 +48,15 @@ Blog.prototype.post = function(msg) {
   if (msg == '') {
     return; }
   
-  var date  = new Date();
-  var file  = this.root + '/posts/' + date.format(CNF.dateString);
-  var write = fs.writeFileSync(file, msg);
-  var fileObj = {file: file, date: date, message: msg};
-
+  var date = new Date()
+    , file = this.root + '/posts/' + date.format(CNF.dateString)
+    , write = fs.writeFileSync(file, msg)
+    , fileObj = {file: file, date: date, message: md(msg), raw: msg};
+  
   this.posts[file] = fileObj;
   this.export.push(fileObj);
-  this.socket.broadcast({date: date, msg: md(msg)});
+  this.socket.broadcast({date: date, message: md(msg), raw: msg});
   this.export.sort(function(a, b) { return a.date > b.date ? 1 : -1; });
 };
 
 exports.initialize = function(app) { return new Blog(app); };
-
-

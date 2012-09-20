@@ -69,7 +69,8 @@ require(["jquery", "console"], function($, TickerConsole) {
 
     socket.on('data', function(data) {
       myCon.add('Received Data: ' + JSON.stringify(data));
-
+      
+      $('#lastmessage').html((new Date()).format('H:i:s'));
       $('#ticker ul').append('<li class="well"><p>' + data.msg + '</p><small>' + new Date(data.date) + '</small>');
     });
     

@@ -6,7 +6,6 @@
 var express = require('express')
   , socket = require('socket.io')
   , routes = require('./routes')
-  , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
   , blog = require('./libs/liveblog');
@@ -18,7 +17,7 @@ app.configure(function() {
   app.set('root', __dirname);
   app.set('port', process.env.PORT || 3000);
   app.set('port.socket', process.env.PORT_SOCKET || process.env.PORT || 3000);
-  app.set('views', __dirname + '/views');
+  app.set('views', app.get('root') + '/views');
   app.set('view engine', 'jade');
   app.set('blog', blog.initialize(app));
   app.use(express.favicon());
@@ -37,8 +36,8 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/export.:format', routes.export);
-app.get('/stream.:format', routes.stream);
+// app.get('/export.:format', routes.export);
+// app.get('/stream.:format', routes.stream);
 
 app.post('/post', routes.post);
 
