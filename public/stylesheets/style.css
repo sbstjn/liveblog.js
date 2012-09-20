@@ -29,3 +29,6 @@
 #login-form input { width: 100%; }
 #login-form { margin: 0px 8px }
 #login-form #password { margin-bottom: 0px; }
+
+#login-action small { float: left; position: relative; margin: 3px 0 0 14px; color: red; font-weight: bold; }
+

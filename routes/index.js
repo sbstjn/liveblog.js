@@ -34,12 +34,11 @@ exports.stream = function(req, res) {
 };
 
 exports.post = function(req, res) {
-  if (req.session.user) {
-    req.app.get('blog').post(req.body.value);
-    res.send('{"status": "200"}');
-  } else {
-    res.send('error');
-  }
+  if (!req.session.user) {
+    return res.send(403, 'Authentication failed!'); }
+
+  req.app.get('blog').post(req.body.value);
+  res.send('Published!');
 };
 
 exports.auth = function(req, res) {
@@ -47,7 +46,12 @@ exports.auth = function(req, res) {
   var password = req.body.password || '';
   
   req.app.get('blog').checkAuth(username, password, function(valid) {
+    if (!valid) {
+      req.session.user = null;
+      return res.send(403, 'Authentication failed!'); 
+    }
+
     req.session.user = username;
-    res.send(valid ? '1' : '0');
-  });
+    res.send(200, 'Thanks!');
+ });
 };

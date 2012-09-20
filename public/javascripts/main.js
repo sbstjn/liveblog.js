@@ -42,8 +42,9 @@ require(["jquery", "console"], function($, TickerConsole) {
       e.preventDefault();
 
       $.post('/auth', {username: $('#username').val(), password: md5($('#password').val())}, function(data) {
-        console.log(data);
-      });
+        $('#login-container').addClass('hide');
+        $('#post-container').removeClass('hide');
+      }).error(function() { $('#error').removeClass('hide'); });
     });
 
     $('textarea#post-content').keyup(function() {

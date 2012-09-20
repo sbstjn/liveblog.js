@@ -19,7 +19,7 @@ block content
       p
         small Last Message @ 
           span#lastmessage #{posts[posts.length-1].date.format('H:i:s')} 
-      .well(class=(auth ? '' : 'hide'))
+      .well#post-container(class=(auth ? '' : 'hide'))
         form#post
           textarea#post-content(name="value", rows="4") And we're ready to start!
         #post-action
@@ -28,10 +28,11 @@ block content
           .btn-group
             button#clear.btn.btn-small Clear
             button#submit.btn.btn-small.btn-primary Submit
-      .well(class=(auth ? 'hide' : ''))
+      .well#login-container(class=(auth ? 'hide' : ''))
         #login-form
           input.span12#username(type="text", placeholder="Username")
           input.span12#password(type="password", placeholder="Password")
         #login-action
+          small#error.hide Login failed!
           .btn-group
             button#login.btn.btn-small.btn-primary Login
