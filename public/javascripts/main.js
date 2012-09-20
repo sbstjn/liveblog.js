@@ -38,6 +38,14 @@ require(["jquery", "console"], function($, TickerConsole) {
       });
     });
 
+    $('button#login').click(function(e) {
+      e.preventDefault();
+
+      $.post('/auth', {username: $('#username').val(), password: md5($('#password').val())}, function(data) {
+        console.log(data);
+      });
+    });
+
     $('textarea#post-content').keyup(function() {
       $('textarea#post-content').change();
     })

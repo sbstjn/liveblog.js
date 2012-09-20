@@ -3,11 +3,14 @@
  */
 
 exports.index = function(req, res) {
+  console.log(req.session);
+  
   res.render('index', {
     posts:    req.app.get('blog').recent(),
     protocol: req.app.get('protocol'), 
     hostname: req.app.get('hostname'), 
-    port:     req.app.get('port.socket') 
+    port:     req.app.get('port.socket'),
+    auth:     req.session.user || null
   });
 };
 
@@ -31,6 +34,20 @@ exports.stream = function(req, res) {
 };
 
 exports.post = function(req, res) {
-  req.app.get('blog').post(req.body.value);
-  res.send('{"status": "200"}');
+  if (req.session.user) {
+    req.app.get('blog').post(req.body.value);
+    res.send('{"status": "200"}');
+  } else {
+    res.send('error');
+  }
+};
+
+exports.auth = function(req, res) {
+  var username = req.body.username || '';
+  var password = req.body.password || '';
+  
+  req.app.get('blog').checkAuth(username, password, function(valid) {
+    req.session.user = username;
+    res.send(valid ? '1' : '0');
+  });
 };

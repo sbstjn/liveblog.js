@@ -13,7 +13,7 @@
 #menu p small { font-size: 11px; }
 #menu #post { padding-right: 30px; }
 #menu #post textarea { width: 100%; margin: 0 18px 0 8px; }
-#menu .btn-group { text-align: right; margin: 8px 8px 0px 8px; }
+#menu .btn-group, #login-action .btn-group { text-align: right; margin: 8px 8px 0px 8px; }
 #menu form { margin-bottom: 0; padding: 0; }
 #menu .info { float: left; position: relative; margin: 3px 0 0 14px;  }
 #menu img.loading { float: left; position: relative; margin: 8px 0 0 12px; display: none; }
@@ -25,3 +25,7 @@
 #console .well { font-family: Monaco; font-size: 11px; padding: 4px 8px; }
 
 #footer p { font-size: 12px; }
+
+#login-form input { width: 100%; }
+#login-form { margin: 0px 8px }
+#login-form #password { margin-bottom: 0px; }

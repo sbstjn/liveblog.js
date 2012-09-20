@@ -39,6 +39,7 @@ app.get('/', routes.index);
 // app.get('/export.:format', routes.export);
 // app.get('/stream.:format', routes.stream);
 
+app.post('/auth', routes.auth);
 app.post('/post', routes.post);
 
 var server = http.createServer(app).listen(app.get('port'), function(){

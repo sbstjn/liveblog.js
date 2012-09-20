@@ -2,8 +2,7 @@ var fs = require('fs')
   , d8local = require('d8/locale/en-US')
   , d8 = require('d8')
   , md = require("node-markdown").Markdown
-  , path = require('path')
-  , socket = require('./socket');
+  , path = require('path');
 
 var CNF = {
   fileRegEx: /^\d{4}\-\d{2}\-\d{2}\T\d{9}$/,
@@ -15,11 +14,14 @@ var Blog = function(app) {
 };
 
 Blog.prototype.initialize = function(app) {
-  this.socket = socket;
+  this.app    = app;
+  this.socket = require('./socket');
   this.posts  = {};
   this.export = [];
   this.files  = fs.readdirSync(app.get('root') + '/posts');
   this.root   = app.get('root');
+
+  this.loadUsers();
   
   for (var i = 0; i < this.files.length; i++) {
     if (!this.files[i].match(CNF.fileRegEx)) {
@@ -34,6 +36,20 @@ Blog.prototype.initialize = function(app) {
   }
   
   this.export.sort(function(a, b) { return a.date > b.date ? 1 : -1; });  
+};
+
+Blog.prototype.checkAuth = function(username, password, callback) {
+  callback(this.user[username] && this.user[username] == password);
+};
+
+Blog.prototype.loadUsers = function() {
+  var data = (fs.readFileSync(this.app.get('root') + '/users') + '').split("\n");
+  
+  this.user = {};
+  for (var i = 0; i < data.length; i++) {
+    var tmp = data[i].split(':');
+    this.user[tmp[0]] = tmp[1];
+  }
 };
 
 Blog.prototype.recent = function() {
